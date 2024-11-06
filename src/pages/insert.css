@@ -1,0 +1,63 @@
+/* insert.css */
+
+body {
+    font-family: Arial, sans-serif; /* Set a default font for the body */
+    background-color: #f5f5f5; /* Light background for contrast */
+}
+
+.insert-section {
+    max-width: 600px; /* Maximum width for the insert section */
+    margin: 0 auto; /* Center the insert section */
+    padding: 20px; /* Padding inside the section */
+    background-color: #fff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.section-title {
+    color: #9c1f1f; /* Dark red color for the title */
+    margin-bottom: 20px; /* Space below the title */
+    text-align: center; /* Center the title */
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+}
+
+input[type="text"], 
+.category-select {
+    border: 1px solid #d0d0d0; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside the input */
+    margin-bottom: 15px; /* Space below each input */
+    font-size: 16px; /* Font size for inputs */
+}
+
+input[type="text"]:focus, 
+.category-select:focus {
+    border-color: #9c1f1f; /* Dark red border on focus */
+    outline: none; /* Remove outline */
+}
+
+.add-question-button {
+    background-color: #9c1f1f; /* Red background for the button */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    padding: 10px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.add-question-button:hover {
+    background-color: #a63737; /* Darker red on hover */
+}
+
+.category-select {
+    padding: 10px; /* Padding for the select dropdown */
+}
+
+option {
+    color: #4e3b30; /* Brown text color for options */
+}
