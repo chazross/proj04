@@ -3,15 +3,19 @@
 body {
     font-family: Arial, sans-serif; /* Set a default font for the body */
     background-color: #f5f5f5; /* Light background for contrast */
+    font-family: 'Georgia', serif;
 }
 
 .dashboard {
-    max-width: 800px;
+    font-family: 'Georgia', serif;
+    max-width: 500px;
     margin: 0 auto; /* Center the dashboard */
     padding: 20px;
-    background-color: #fff; /* White background for the dashboard */
+    background-color: rgba(213, 191, 134, 0.7);
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center;
+    
 }
 
 h2 {
@@ -24,16 +28,17 @@ h3 {
 
 p {
     color: #4e3b30; /* Brown color for text */
+    font-weight: bold;
+
 }
 
 .logout-button {
     background-color: #9c1f1f; /* Red background for the logout button */
-    color: #fff; /* White text color */
+    color: #d5bf86; 
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .logout-button:hover {

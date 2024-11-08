@@ -11,10 +11,10 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg">
             <div className="container">
-                <Link className="navbar-brand victorian-books" to="/" onClick={handleLinkClick}>
-                    Killer Knowledge
+                <Link className="navbar-brand victorian-books" style={{ color: '#d5bf86' }} to="/" onClick={handleLinkClick}>
+                    Victorian Books
                 </Link>
                 <button
                     className="navbar-toggler"
@@ -39,7 +39,7 @@ const Navbar = () => {
                             <Link className="nav-link" to="/dashboard" onClick={handleLinkClick}>Dashboard</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/insert" onClick={handleLinkClick}>Insert</Link>
+                            <Link className="nav-link" to="/insert" onClick={handleLinkClick}>Create</Link>
                         </li>
                     </ul>
                 </div>

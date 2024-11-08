@@ -1,45 +1,77 @@
 /* navbar.css */
 
+/* Basic reset for navbar */
 .navbar {
-    background-color: #4e3b30; /* Brown background for the navbar */
+    background-color: #5c3a21; 
+    font-family: "Rye", serif;
+    padding: 15px 30px;
+  
 }
 
-.navbar-brand {
-    color: #9c1f1f; /* Dark red color for the brand name */
-    font-weight: bold; /* Make the brand name bold */
-    font-size: 1.5rem; /* Increase the font size */
+  
+
+/* Navbar Brand (logo) */
+.navbar-brand.victorian-books {
+    font-size: 1.7em;
+    color: #91171f; /* Red color for the brand */
+    text-transform: uppercase;
+    text-decoration: none;
 }
 
-.navbar-brand:hover {
-    color: #a63737; /* Darker red on hover */
+.navbar-brand.victorian-books:hover {
+    color: #7b1f14; /* Darker red on hover */
 }
 
-.nav-link {
-    color: #ffffff; /* White text color for links */
-    padding: 10px 15px; /* Padding for the links */
-}
-
-.nav-link:hover {
-    color: #9c1f1f; /* Dark red on hover */
-    background-color: rgba(255, 255, 255, 0.1); /* Lighten background on hover */
-    border-radius: 5px; /* Rounded corners for hover effect */
-}
-
+/* Navbar toggle button (for small screens) */
 .navbar-toggler {
-    border-color: #9c1f1f; /* Dark red border for the toggler */
+    border-color: #9b2d20; /* Red border for toggle */
 }
 
 .navbar-toggler-icon {
-    background-color: #9c1f1f; /* Dark red color for the toggler icon */
+    background-color: #9b2d20; /* Red background for hamburger icon */
 }
 
-.collapse {
-    transition: max-height 0.3s ease; /* Smooth transition for collapsing */
+/* Collapse navbar content */
+.navbar-collapse {
+    justify-content: flex-end;
 }
 
-/* Add responsiveness for smaller screens */
+/* Navbar links */
+.nav-link {
+    font-size: 1.1em;
+    color: #d5bf86; /* Light beige text color */
+    font-weight: bold;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #9b2d20; /* Red hover color */
+    background-color: #d5bf86; /* Light background color on hover */
+    border-radius: 5px;
+}
+
+/* Active navbar link */
+.nav-item.active .nav-link {
+    color: #9b2d20; /* Red color for active link */
+    background-color: #f5f0e1; /* Light background for active state */
+    border-radius: 5px;
+}
+
+/* Navbar on small screens (collapsed state) */
+.navbar-nav {
+    background-color: #5c3a21; /* Dark brown background for collapsed state */
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.navbar-nav .nav-item {
+    text-align: center;
+}
+
+/* On mobile, change link padding */
 @media (max-width: 768px) {
-    .navbar-nav {
-        background-color: #4e3b30; /* Brown background for dropdown on small screens */
+    .nav-link {
+        padding: 12px 15px;
     }
 }

@@ -1,26 +1,3 @@
-/* footer.css */
-
-.footer {
-    background-color: #4e3b30; /* Brown background for the footer */
-    color: #ffffff; /* White text color */
-    padding: 20px 0; /* Padding for the footer */
-    text-align: center; /* Center text in the footer */
-}
-
-.footer p {
-    margin: 0; /* Remove default margin */
-    font-size: 14px; /* Set font size for the text */
-}
-
-.footer a {
-    color: #9c1f1f; /* Dark red color for links */
-    text-decoration: none; /* Remove underline from links */
-}
-
-.footer a:hover {
-    color: #a63737; /* Darker red on hover */
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .footer {

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './login.css'; // Ensure this file exists
 
@@ -10,6 +10,7 @@ const Login = () => {
 
   const handleLogin = (e) => { 
     e.preventDefault(); 
+    // Simple validation for demo purposes
     if (username === 'admin' && password === 'password') { 
       setErrorMessage(''); 
       navigate('/dashboard'); 
@@ -20,7 +21,6 @@ const Login = () => {
 
   return (
     <div className="auth-screen login-screen"> {/* Container for the login screen */}
-      <div className="caution-tape"></div> 
       <h1>Login</h1> 
       <form onSubmit={handleLogin}> {/* Form element that triggers handleLogin on submit */}
         <div>
@@ -29,7 +29,7 @@ const Login = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Input username"
+            placeholder="Enter your username"
           />
         </div>
         <div>
@@ -38,21 +38,21 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Login password"
+            placeholder="Enter your password"
           />
         </div>
-        {errorMessage && <p className="error">{errorMessage}</p>} {}
+        {errorMessage && <p className="error">{errorMessage}</p>} {/* Only display error if message exists */}
         <button type="submit">Login</button> 
       </form>
       {/* Link to registration page */}
       <p>
-        New to us? 
+        New to Victorian Books?
         <span className="register-link">
-          <Link to="/register"> Sign up here</Link>
+          <Link to="/register"> Please enroll here.</Link>
         </span>
       </p> 
     </div>
   );
 };
 
-export default Login; 
+export default Login;

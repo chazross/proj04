@@ -59,8 +59,8 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <h2>Good Day, User</h2>
-            <p>Pick a topic.</p>
-            <button className="logout-button" onClick={handleLogout}>Logout</button>
+            <p>Kindly select a topic.</p>
+            <button className="logout-button" onClick={handleLogout}>Exit</button>
 
             <div className="categories">
                 {categories.length > 0 ? (
@@ -74,7 +74,7 @@ const Dashboard = () => {
                         </button>
                     ))
                 ) : (
-                    <p>No categories available</p>
+                    <p>No topics available</p>
                 )}
             </div>
 
