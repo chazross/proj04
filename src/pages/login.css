@@ -6,10 +6,7 @@
   background-color: #f9f0e1;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
   max-width: 400px;
-  margin: 50px auto;
 }
 
   
@@ -93,7 +90,7 @@
     background-size: cover;  /* Ensures the image covers the whole area */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
-    height: 88vh; /* Full viewport height */
+    height: 87vh; /* Full viewport height */
     width: 100%; /* Full width */
   }
 

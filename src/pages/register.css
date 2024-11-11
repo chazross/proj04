@@ -9,6 +9,7 @@ body {
     max-width: 400px; /* Maximum width for the registration form */
     margin: 0 auto; /* Center the registration form */
     background-color: rgba(213, 191, 134, 0.7);
+    align-items: flex-start;
 }
 
 h1 {
