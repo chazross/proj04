@@ -7,16 +7,21 @@ const Dashboard = () => {
     const [categories, setCategories] = useState([]);
     const [questions, setQuestions] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [error, setError] = useState(''); 
 
+    
     useEffect(() => { 
         const fetchCategories = async () => { //
             try {
-                const response = await fetch('http://localhost:3000/categories');
+                const response = await fetch('http://localhost:3003/allcategories');
                 if (response.ok) {
+              
                     const data = await response.json();
-                    setCategories(data.categories || []);
+                    console.log(data)
+                    setCategories(data || []);
                 } else {
                     console.error('Failed to fetch categories');
+                    setError(null)
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -26,14 +31,20 @@ const Dashboard = () => {
     }, []);
 
     const fetchQuestions = async (categoryId, categoryName) => {
+        console.log(categoryId, categoryName);
+        setError(null); // Reset any previous errors
         try {
-            const response = await fetch(`http://localhost:3000/questions/by-category?categoryId=${categoryId}`);
+            const response = await fetch(`http://localhost:3003/questions/category/${categoryId}`);
             const data = await response.json();
-            setQuestions(data.questions || []);
-            setSelectedCategory(categoryName);
-        } catch (error) {
-            console.error('Error fetching questions:', error);
-            setQuestions([]);
+            console.log(data)
+            if (response.ok) {
+                setQuestions(data || []);
+                setSelectedCategory(categoryName);
+            } else {
+                setError(data.message || "Error fetching questions");
+            }
+        } catch (err) {
+            setError("Failed to fetch questions. Please try again.");
         }
     };
 
@@ -43,7 +54,8 @@ const Dashboard = () => {
                 method: 'DELETE',
             });
             if (response.ok) {
-                setQuestions(questions.filter((question) => question.question_id !== id));
+                setQuestions(questions.filter((question) => question.id !== id));
+                setError('')
             } else {
                 console.error('Failed to delete');
             }
@@ -59,31 +71,40 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <h2>Good Day, User</h2>
-            <p>Kindly select a topic.</p>
-            <button className="logout-button" onClick={handleLogout}>Exit</button>
+            <p>Pick a topic.</p>
+            <button className="logout-button" onClick={handleLogout}>Logout</button>
 
             <div className="categories">
                 {categories.length > 0 ? (
                     categories.map((category) => (
                         <button
-                            key={category.category_id}
-                            onClick={() => fetchQuestions(category.category_id, category.category_name)}
+                            key={category.categoryID}
+                            onClick={() => fetchQuestions(category.categoryID, category.categoryName)}
                             className="category-button"
                         >
-                            {category.category_name}
+                            {category.categoryName}
                         </button>
                     ))
                 ) : (
-                    <p>No topics available</p>
+                    <p>No categories available</p>
                 )}
             </div>
 
             <div className="questions-section">
-                {selectedCategory && <h3>Questions for {selectedCategory}</h3>}
-                {questions.map((question) => (
-                    <QuestionItem key={question.question_id} question={question} deleteQuestion={deleteQuestion} />
-                ))}
-            </div>
+    {selectedCategory && <h3>Questions for {selectedCategory}</h3>}
+    
+    { questions.length > 0 ? (
+        questions.map((question) => (
+            <QuestionItem
+                key={question.id}
+                question={question}
+                deleteQuestion={deleteQuestion}
+            />
+        ))
+    ) : (
+        <p>No questions added for this category.</p> // Display message if no questions
+    )}
+</div>
         </div>
     );
 };
@@ -98,13 +119,13 @@ const QuestionItem = ({ question, deleteQuestion }) => {
     return (
         <div className="question-item">
             <div className="question-header" onClick={toggleDropdown}>
-                <p><strong>Q:</strong> {question.question_text}</p>
+                <p><strong>Q:</strong> {question.questionText}</p>
                 <span>{isOpen ? '-' : '+'}</span>
             </div>
             {isOpen && (
                 <div className="question-answer">
                     <p><strong>A:</strong> {question.answer}</p>
-                    <button onClick={() => deleteQuestion(question.question_id)} className="delete-button">Delete</button>
+                    <button onClick={() => deleteQuestion(question.id)} className="delete-button">Delete</button>
                 </div>
             )}
         </div>

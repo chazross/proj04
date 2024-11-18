@@ -9,22 +9,40 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState(''); 
   const navigate = useNavigate(); 
 
-  const handleRegister = (e) => { 
+  const handleRegister = async (e) => { 
     e.preventDefault(); 
     setErrorMessage(''); 
-
+  
     if (!username || !password || !confirmPassword) { 
       setErrorMessage('Please make sure all fields are completed.'); 
       return; 
     }
-
+  
     if (password !== confirmPassword) { 
       setErrorMessage('The passwords entered do not match.'); 
       return; 
     }
-
-    // Navigate to the dashboard on successful registration
-    navigate('/dashboard'); 
+  
+    try {
+      const response = await fetch('http://localhost:3003/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: username, email: `${username}@example.com`, password }),
+      });
+      console.log(response)
+      if (response.ok) {
+        // Navigate to the dashboard on successful registration
+        navigate('/dashboard'); 
+      } else {
+        const data = await response.json();
+        setErrorMessage(data.message || 'An error occurred during registration.');
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred during registration.');
+      console.error(error);
+    }
   };
 
   return (
